@@ -57,36 +57,46 @@ class GameScene(CommonScene):
             m.click(*POSITION['discovery'][name])
             time.sleep(0.3)
 
-        def _receive(place='place_monde_2', role='role_2'):
-            m.move(*POSITION['discovery'][place])
-            time.sleep(0.3)
+        def _set(place='place_monde_2', role='role_2'):
             m.click(*POSITION['discovery'][place])
             time.sleep(0.3)
             # 判断是否完成探索 未完成则跳过流程
             if not locate('discovery_recall_button.png'):
-                m.move(*POSITION['discovery']['confirm'])
-                time.sleep(0.3)
                 m.click(*POSITION['discovery']['confirm'])  # 领取奖励
                 time.sleep(0.3)
                 m.click(*POSITION['discovery']['confirm'])  # 确认奖励
                 time.sleep(0.3)
                 m.click(*POSITION['discovery']['confirm'])  # 选择角色
                 time.sleep(0.3)
-                m.move(*POSITION['discovery'][role])
-                time.sleep(0.3)
                 m.click(*POSITION['discovery'][role])  # 选择角色1
                 time.sleep(0.3)
 
+        def _receive():
+            while 1:
+                time.sleep(0.5)
+                position = locate('expedition/dispatch/mark.png', threshold=0.85)
+                if not position:
+                    break
+                pyautogui.click(*position)
+                time.sleep(0.3)
+                pyautogui.click(*POSITION['discovery']['confirm'])  # 领取奖励
+                time.sleep(0.3)
+                pyautogui.click(*POSITION['discovery']['confirm'])  # 确认奖励
+                time.sleep(0.3)
+
         _tag('tag_monde')
-        _receive('place_monde_1', 'role_1')  # 蒙德1
-        _receive('place_monde_2', 'role_2')  # 蒙德2
+        _receive()
+        _set('place_monde_1', 'role_1')  # 蒙德1
+        _set('place_monde_2', 'role_2')  # 蒙德2
 
         _tag('tag_liyue')
-        _receive('place_liyue_1', 'role_3')  # 璃月1 角色3-申鹤
-        _receive('place_liyue_2', 'role_1')  # 璃月2
+        _receive()
+        _set('place_liyue_1', 'role_3')  # 璃月1 角色3-申鹤
+        _set('place_liyue_2', 'role_1')  # 璃月2
 
         _tag('tag_inazuma')
-        _receive('place_inazuma_1', 'role_1')  # 稻妻1
+        _receive()
+        _set('place_inazuma_1', 'role_1')  # 稻妻1
 
         k.tap_key(k.escape_key)
         time.sleep(1)
