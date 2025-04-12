@@ -1,73 +1,73 @@
-<!-- [中文版本](README.zh-CN.md) -->
+<!-- [English Version](README.en.md) -->
 
-# Genshin Impact Automation Tool
+# 原神自动化工具
 
-> ⚠️ **Project Status**: This project is no longer maintained as the author has quit Genshin Impact. 
+> ⚠️ **项目状态**: 本项目已不再维护，因为作者已退坑原神。
 
-This is an automation tool for Genshin Impact game that performs various daily tasks automatically using image recognition and GUI automation.
+这是一个基于图像识别和GUI自动化的原神游戏自动化工具，可自动完成各种日常任务。
 
-## Features
+## 功能特性
 
-- **Daily Rewards Collection**
-  - Auto receive daily blessing
-  - Auto claim expedition rewards
-  - Auto collect Serenitea Pot rewards
-  - Auto process mail
-  - Auto claim Battle Pass rewards
+- **每日奖励收集**
+  - 自动领取每日祝福
+  - 自动领取探索派遣奖励
+  - 自动领取尘歌壶奖励
+  - 自动处理邮件
+  - 自动领取纪行奖励
 
-- **Resource Collection**
-  - Auto chop trees (wood collection)
-  - Auto pick up items
-  - Auto mine ores (TODO)
-  - Auto collect character ascension materials (TODO)
+- **资源收集**
+  - 自动砍树(木材收集)
+  - 自动拾取物品
+  - 自动采矿(待实现)
+  - 自动收集角色突破材料(待实现)
 
-- **Character Management**
-  - Auto heal when health is low
-  - Auto use Elemental Skill (E)
-  - Auto combat actions (attack combos)
+- **角色管理**
+  - 血量低时自动治疗
+  - 自动使用元素战技(E)
+  - 自动战斗连招
 
-- **Navigation**
-  - Auto teleport to specific locations
-  - Auto navigate between different game scenes
+- **地图导航**
+  - 自动传送到指定地点
+  - 自动在不同游戏场景间切换
 
-## Technical Implementation
+## 技术实现
 
-- **Image Recognition**
-  - Uses OpenCV for template matching
-  - Custom image comparison algorithm (`is_match` function)
-  - Screenshot analysis to detect UI elements
+- **图像识别**
+  - 使用OpenCV进行模板匹配
+  - 自定义图像比较算法(`is_match`函数)
+  - 截图分析检测UI元素
 
-- **Automation**
-  - PyAutoGUI for mouse/keyboard control
-  - Multi-threading for concurrent tasks
-  - State machine pattern for scene management
+- **自动化控制**
+  - 使用PyAutoGUI控制鼠标键盘
+  - 多线程处理并发任务
+  - 状态机模式管理不同场景
 
-## File Structure
+## 文件结构
 
 ```
 .
-├── actions.py            # Action definitions
-├── demo.py               # Main automation script
-├── positions.py          # Screen coordinates definitions
-├── requirements.txt      # Python dependencies
-├── roles.py              # Character control functions
-├── tools.py              # Core image processing utilities
-├── locations/            # Reference images for UI elements
-│   ├── game_*.jpg        # Game UI elements
-│   ├── loading_*.jpg     # Loading screen elements
-│   └── map/              # Map related elements
-└── scenes/               # Scene handlers
-    ├── battle.py         # Battle scene
-    ├── game.py           # Main game scene
-    ├── loading.py        # Loading scene
-    ├── log.py            # Battle Pass scene
-    ├── map.py            # Map scene
-    ├── pot.py            # Serenitea Pot scene
-    ├── setting.py        # Settings scene
-    └── system.py         # System/launcher scene
+├── actions.py            # 动作定义
+├── demo.py               # 主自动化脚本
+├── positions.py          # 屏幕坐标定义
+├── requirements.txt      # Python依赖
+├── roles.py              # 角色控制函数
+├── tools.py              # 核心图像处理工具
+├── locations/            # UI元素参考图片
+│   ├── game_*.jpg        # 游戏UI元素
+│   ├── loading_*.jpg     # 加载界面元素
+│   └── map/              # 地图相关元素
+└── scenes/               # 场景处理器
+    ├── battle.py         # 战斗场景
+    ├── game.py           # 主游戏场景
+    ├── loading.py        # 加载场景
+    ├── log.py            # 纪行场景
+    ├── map.py            # 地图场景
+    ├── pot.py            # 尘歌壶场景
+    ├── setting.py        # 设置场景
+    └── system.py         # 系统/启动器场景
 ```
 
-## Dependencies
+## 依赖要求
 
 - Python 3.x
 - OpenCV (`opencv-python`)
@@ -75,28 +75,28 @@ This is an automation tool for Genshin Impact game that performs various daily t
 - Pillow (PIL)
 - PyUserInput
 
-Install dependencies with:
+安装依赖:
 ```bash
 pip install -r requirements.txt
 ```
 
-## Usage
+## 使用说明
 
-1. Configure game resolution to match the coordinates defined in `positions.py`
-2. Place the game window in the expected position (coordinates are based on 2560x1440 resolution)
-3. Run the main script:
+1. 配置游戏分辨率以匹配`positions.py`中定义的坐标
+2. 将游戏窗口放置在预期位置(坐标基于2560x1440分辨率)
+3. 运行主脚本:
 ```bash
 python demo.py
 ```
 
-## Configuration
+## 配置说明
 
-- Edit `positions.py` to adjust coordinates for your screen resolution
-- Add/update reference images in `locations/` folder as needed
-- Modify thresholds in `tools.py` for image matching sensitivity
+- 编辑`positions.py`调整适合您屏幕分辨率的坐标
+- 在`locations/`文件夹中添加/更新参考图片
+- 修改`tools.py`中的阈值调整图像匹配敏感度
 
-## Notes
+## 注意事项
 
-- The tool is designed to run while the game is in windowed mode
-- Failsafe is disabled (pyautogui.FAILSAFE = False) to prevent interruption
-- Use with caution as automation may violate game's Terms of Service
+- 工具设计为在游戏窗口模式下运行
+- 已禁用故障保护(pyautogui.FAILSAFE = False)防止中断
+- 谨慎使用，自动化可能违反游戏服务条款
