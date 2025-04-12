@@ -37,7 +37,7 @@ class MapScene(CommonScene):
         time.sleep(0.3)
         pyautogui.click(*POSITION['map']['place_monde'])
         time.sleep(1)
-        pyautogui.click(*locate('map/item/waypoint.png'))
+        pyautogui.click(*locate('map/item/waypoint.png', once=False))
         time.sleep(0.5)
         pyautogui.click(*POSITION['map']['transmit_button'])
         time.sleep(0.3)
@@ -123,23 +123,6 @@ class MapScene(CommonScene):
         loading(POSITION['game']['role_button'], 'game_role_button', threshold=0.7)  # 确认是否进入游戏界面
         time.sleep(0.3)
 
-        # pyautogui.keyDown('s')
-        # time.sleep(18)
-        # pyautogui.keyUp('s')
-        # time.sleep(0.3)
-        # pyautogui.keyDown('a')
-        # time.sleep(1.5)
-        # pyautogui.keyUp('a')
-        # time.sleep(0.3)
-        # pyautogui.keyDown('w')
-        # time.sleep(1.5)
-        # pyautogui.keyUp('w')
-        # time.sleep(0.3)
-        #
-        # pyautogui.click(*POSITION['game']['skip_dialog'])
-        # time.sleep(0.2)
-        # pyautogui.press('f', presses=3, interval=0.2)
-
     @staticmethod
     def transmit_to_liyue_qingyunding():
         """
@@ -166,7 +149,6 @@ class MapScene(CommonScene):
             pyautogui.dragTo(*POSITION['windows']['right_bottom'], button='left', duration=0.4)
             time.sleep(0.5)
 
-        _shift()
         _shift()
 
         position = locate('map/statue/liyue_qingyun_peak_1.png', once=False, threshold=0.85)

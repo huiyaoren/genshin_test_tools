@@ -79,4 +79,9 @@ def main():
 
 
 if __name__ == '__main__':
+    # from time import sleep
+    # from tools import locate
+    # sleep(1)
+    # pyautogui.click(*locate('expedition/dispatch/mark.png', once=False))
+    # exit()
     main()
